@@ -64,10 +64,3 @@ function fish_prompt
   echo (set_color white)"╰─"(set_color --bold white)"\$ "(set_color normal)
 end
 
-function fish_right_prompt
-  set -l st $status
-
-  if [ $st != 0 ];
-    echo (set_color red) ↵ $st(set_color normal)
-  end
-end
