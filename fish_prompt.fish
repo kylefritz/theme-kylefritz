@@ -10,10 +10,10 @@ function __user_host
   end
   
   if test -n "$SSH_CONNECTION"
-    echo -n $USER@(hostname|cut -d . -f 1)
+    echo -n $USER@(hostname|cut -d . -f 1) (set color normal)
   end
   
-  echo (set color normal)
+  echo -n (set color normal)
 end
 
 function __current_path
