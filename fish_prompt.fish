@@ -8,11 +8,16 @@ function __user_host
   else
     echo -n (set_color --bold green)
   end
-  echo -n $USER@(hostname|cut -d . -f 1) (set color normal)
+  
+  if test -n "$SSH_CONNECTION"
+    echo -n $USER@(hostname|cut -d . -f 1)
+  end
+  
+  echo (set color normal)
 end
 
 function __current_path
-  echo -n (set_color --bold blue) (pwd) (set_color normal) 
+  echo -n (set_color --bold blue) (string replace $HOME '~' (pwd)) (set_color normal)
 end
 
 function _git_branch_name
