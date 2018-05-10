@@ -43,15 +43,15 @@ function __git_status
 end
 
 function __ruby_version
-  if type "rvm-prompt" > /dev/null 2>&1
-    set ruby_version (rvm-prompt i v g)
-  else if type "rbenv" > /dev/null 2>&1
+  # requires rbenv
+  if type "rbenv" > /dev/null 2>&1
     set ruby_version (rbenv version-name)
-  else
-    set ruby_version "system"
+    set ruby_global_version (rbenv global)
+    
+    if [ $ruby_version != $ruby_global_version ] 
+      echo -n (set_color red) ‹$ruby_version› (set_color normal)
+    end
   end
-
-  echo -n (set_color red) ‹$ruby_version› (set_color normal)
 end
 
 function fish_prompt
