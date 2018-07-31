@@ -2,19 +2,19 @@
 # Some code stolen from oh-my-fish clearance theme: https://github.com/bpinto/oh-my-fish/blob/master/themes/clearance/
 
 function __user_host
-  if [ (id -u) = "0" ];
-    # if user is not you, warn
-    echo -n (set_color --bold red)
-  else
-    echo -n (set_color --bold green)
-  end
-  
   # only show host name if we're SSH
   if test -n "$SSH_CONNECTION"
-    echo -n $USER@(hostname|cut -d . -f 1) (set_color normal)
+
+    # if user is not you, warn
+    if [ (id -u) = "0" ];
+
+      echo -n (set_color --bold red) $USER@
+    else
+      echo -n (set_color --bold green)
+    end
+    
+    echo -n (hostname|cut -d . -f 1) (set_color normal)
   end
-  
-  echo -n (set_color normal)
 end
 
 function __current_path
