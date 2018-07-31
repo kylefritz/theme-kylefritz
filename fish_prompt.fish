@@ -5,9 +5,8 @@ function __user_host
   # only show host name if we're SSH
   if test -n "$SSH_CONNECTION"
 
-    # if user is not you, warn
+    # warn if sudo
     if [ (id -u) = "0" ];
-
       echo -n (set_color --bold red) $USER@
     else
       echo -n (set_color --bold green)
