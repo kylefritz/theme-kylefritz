@@ -2,22 +2,13 @@
 # Some code stolen from oh-my-fish clearance theme: https://github.com/bpinto/oh-my-fish/blob/master/themes/clearance/
 
 function __user_host
-  set -l content 
-  if [ (id -u) = "0" ];
-    echo -n (set_color --bold red)
-  else
-    echo -n (set_color --bold green)
-  end
-  
   if test -n "$SSH_CONNECTION"
-    echo -n $USER@(hostname|cut -d . -f 1) (set color normal)
+    echo -n (set_color --bold red)$USER@(hostname|cut -d . -f 1)(set_color normal)
   end
-  
-  echo -n (set color normal)
 end
 
 function __current_path
-  echo -n (set_color --bold blue) (string replace $HOME '~' (pwd)) (set_color normal)
+  echo -n (set_color --bold blue)(string replace $HOME '~' (pwd))(set_color normal)
 end
 
 function _git_branch_name
