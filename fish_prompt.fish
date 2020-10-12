@@ -49,7 +49,17 @@ function __ruby_version
     set ruby_global_version (rbenv global)
     
     if [ $ruby_version != $ruby_global_version ] 
-      echo -n (set_color red) ‹$ruby_version› (set_color normal)
+      echo -n (set_color red) ‹$ruby_version›(set_color normal)
+    end
+  end
+
+  # requires asdf
+  if type asdf > /dev/null 2>&1
+    set ruby_version (asdf current ruby | awk '{print $2}')
+    set ruby_global_version (sed 's/ruby //g' ~/.tool-versions)
+
+    if [ $ruby_version != $ruby_global_version ]
+      echo -n (set_color red) ‹$ruby_version›(set_color normal)
     end
   end
 end
