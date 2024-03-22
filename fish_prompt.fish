@@ -64,10 +64,16 @@ function __ruby_version
   end
 end
 
+# python venv
+function __venv
+  echo -n (set_color green) $VIRTUAL_ENV_PROMPT(set_color normal)
+end
+
 function fish_prompt
   __user_host
   __current_path
   __ruby_version
+  __venv
   __git_status
   echo -e ''
   echo (set_color --bold white)"\$ "(set_color normal)
