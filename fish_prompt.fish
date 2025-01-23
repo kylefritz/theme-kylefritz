@@ -75,6 +75,7 @@ function fish_prompt
   __ruby_version
   __venv
   __git_status
+  echo ''
   echo (set_color --bold white)"\$ "(set_color normal)
 end
 
